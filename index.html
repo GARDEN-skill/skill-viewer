@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>스킬설명 사이트</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .buttons {
+      margin: 20px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .skill {
+      margin: 20px auto;
+      max-width: 350px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #f9f9f9;
+    }
+    .skill img {
+      border-radius: 5px;
+    }
+    .skill-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .skill-title img {
+      width: 30px;
+      height: 30px;
+    }
+    .skill-desc {
+      text-align: left;
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.5em;
+    }
+    .skill-desc h3 {
+      margin: 5px 0;
+      font-size: 15px;
+      color: #333;
+    }
+    .skill-desc ul {
+      margin: 5px 0 0 15px;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>스킬설명 사이트</h1>
+  <div class="buttons">
+    <button onclick="showSkills('견습기사')">견습기사</button>
+    <button onclick="showSkills('마법사')">마법사</button>
+    <button onclick="showSkills('도둑')">도둑</button>
+  </div>
+  <div id="skills"></div>
+
+  <script>
+    const skills = [
+      {
+        "job": "견습기사",
+        "name": "와일드댄스(Wild Dance)",
+        "img": "gif/wilddance.gif",
+        "icon": "icons/wilddance_icon.png",
+        "desc": "검을 내지른 채 회전하여 자신의 주위에 있는 적을 동시에 공격한다.",
+        "details": [
+          "타격 횟수 0.3초마다 1회 공격",
+          "물리 견습기사 주력스킬",
+          "파워 업 형태 위력, 범위, 무기 사정거리 × 4m"
+        ]
+      },
+      {
+  "job": "마법사",
+  "name": "메테오 샤워(Meteor Shower)",
+  "img": "gif/meteor.gif",
+  "icon": "icons/meteor_icon.png",
+  "desc": "운석을 떨어뜨려 다수의 적을 공격한다.",
+  "details": [
+    "타격 횟수: 최대 3회",
+    "지식 마법사 주력스킬",
+    "파워 업 형태: 위력, 범위"
+  ]
+},
+{
+  "job": "도둑",
+  "name": "다팅피버(Darting Fever)",
+  "img": "gif/dartingfever.gif",
+  "icon": "icons/dartingfever_icon.png",
+  "desc": "주위 360도 범위 안의 몬스터에게 단검을 공격 횟수만큼 난사. 단검은 한 개만 사용.",
+  "details": [
+    "연속 타격: 최대 4회",
+    "물리 도둑 주력스킬",
+    "주의사항: 도둑은 강타 100% 적용이 안되는 버그가 있습니다"
+  ]
+}
+
+    ];
+
+    function showSkills(job) {
+      const container = document.getElementById("skills");
+      container.innerHTML = "";
+      const filtered = skills.filter(skill => skill.job === job);
+
+      filtered.forEach(skill => {
+        const skillDiv = document.createElement("div");
+        skillDiv.className = "skill";
+
+        // 설명 리스트 생성
+        let detailsHTML = "";
+        if (skill.details && skill.details.length > 0) {
+          detailsHTML = "<ul>" + skill.details.map(d => `<li>${d}</li>`).join("") + "</ul>";
+        }
+
+        skillDiv.innerHTML = `
+          <img src="${skill.img}" alt="${skill.name}" style="width:250px;height:250px;"><br>
+          <div class="skill-title">
+            <img src="${skill.icon}" alt="${skill.name} 아이콘">
+            <span>${skill.name}</span>
+          </div>
+          <div class="skill-desc">
+            <h3>스킬 설명</h3>
+            <p>${skill.desc}</p>
+            ${detailsHTML}
+          </div>
+        `;
+        container.appendChild(skillDiv);
+      });
+    }
+  </script>
+</body>
+</html>
