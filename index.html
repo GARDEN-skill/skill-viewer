@@ -1,139 +1,448 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>스킬설명 사이트</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    .buttons {
-      margin: 20px;
-    }
+    body { font-family: Arial, sans-serif; text-align: center; background:#f0f0f5; }
+    .buttons { margin:20px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
     button {
-      margin: 5px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      padding:10px 14px; background:#4CAF50; color:#fff; border:none; border-radius:6px; cursor:pointer;
+      box-shadow:0 1px 2px rgba(0,0,0,.08);
     }
-    button:hover {
-      background-color: #45a049;
-    }
+    button:hover { background:#45a049; }
+    #skills { display:grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap:18px; padding:0 18px 40px; }
     .skill {
-      margin: 20px auto;
-      max-width: 350px;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background: #f9f9f9;
+      margin:0 auto; max-width:360px; padding:15px; border:1px solid #ddd; border-radius:12px; background:#f9f9f9;
+      box-shadow:0 2px 6px rgba(0,0,0,0.08);
     }
-    .skill img {
-      border-radius: 5px;
-    }
-    .skill-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      margin-top: 10px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-    .skill-title img {
-      width: 30px;
-      height: 30px;
-    }
-    .skill-desc {
-      text-align: left;
-      background: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      margin-top: 10px;
-      font-size: 14px;
-      line-height: 1.5em;
-    }
-    .skill-desc h3 {
-      margin: 5px 0;
-      font-size: 15px;
-      color: #333;
-    }
-    .skill-desc ul {
-      margin: 5px 0 0 15px;
-      padding: 0;
+    .skill img.preview { width:100%; height:220px; object-fit:cover; border-radius:8px; }
+    .skill-title { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:10px; font-weight:bold; font-size:16px; }
+    .skill-title img { width:28px; height:28px; border-radius:4px; }
+    .skill-desc { text-align:left; background:#fff; padding:12px; border-radius:10px; margin-top:10px; font-size:14px; line-height:1.55; }
+    .skill-desc h3 { margin:4px 0 8px; font-size:15px; color:#333; }
+    .skill-desc ul { margin:8px 0 0 18px; padding:0; }
+    .meta { text-align:left; margin-top:8px; }
+    details.meta summary { cursor:pointer; user-select:none; color:#333; font-weight:600; }
+    .codebox {
+      margin-top:8px; background:#fff; border:1px solid #e6e6e6; border-radius:8px; padding:8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size:12px; white-space:pre-wrap; word-break:break-word;
     }
   </style>
 </head>
 <body>
   <h1>스킬설명 사이트</h1>
+
   <div class="buttons">
     <button onclick="showSkills('견습기사')">견습기사</button>
     <button onclick="showSkills('마법사')">마법사</button>
     <button onclick="showSkills('도둑')">도둑</button>
+    <button onclick="showSkills('전사')">전사</button>
+    <button onclick="showSkills('광학사')">광학사</button>
+    <button onclick="showSkills('악마')">악마</button>
+    <button onclick="showSkills('강신술사')">강신술사</button>
+    <button onclick="showSkills('마법창병')">마법창병</button>
+    <button onclick="showSkills('마법궁수')">마법궁수</button>
+    <button onclick="showSkills('투사')">투사</button>
+    <button onclick="showSkills('영술사')">영술사</button>
+    <button onclick="showSkills('변신소녀')">변신소녀</button>
+    <button onclick="showSkills('공주')">공주</button>
+    <button onclick="showSkills('늑대인간')">늑대인간</button>
+    <button onclick="showSkills('타락천사')">타락천사</button>
+    <button onclick="showSkills('사제')">사제</button>
+    <button onclick="showSkills('무도가')">무도가</button>
   </div>
+
   <div id="skills"></div>
 
   <script>
     const skills = [
+      /* ==== 견습기사 ==== */
       {
-        "job": "견습기사",
-        "name": "와일드댄스(Wild Dance)",
-        "img": "gif/wilddance.gif",
-        "icon": "icons/wilddance_icon.png",
-        "desc": "검을 내지른 채 회전하여 자신의 주위에 있는 적을 동시에 공격한다.",
-        "details": [
-          "타격 횟수 0.3초마다 1회 공격",
-          "물리 견습기사 주력스킬",
-          "파워 업 형태 위력, 범위, 무기 사정거리 × 4m"
-        ]
+        "job":"견습기사",
+        "name":"워 크라이(War Cry)",
+        "img":"gif/warcry.gif",
+        "icon":"icons/warcry_icon.png",
+        "desc":"전장의 함성을 질러 주위의 적들에게 동시에 타격을 줌.",
+        "details":[ "타격 횟수: 최대타수3", "지식 견습기사 사냥 주력스킬", "스킬 속성 바람" ]
       },
       {
-  "job": "마법사",
-  "name": "메테오 샤워(Meteor Shower)",
-  "img": "gif/meteor.gif",
-  "icon": "icons/meteor_icon.png",
-  "desc": "운석을 떨어뜨려 다수의 적을 공격한다.",
-  "details": [
-    "타격 횟수: 최대 3회",
-    "지식 마법사 주력스킬",
-    "파워 업 형태: 위력, 범위"
-  ]
-},
-{
-  "job": "도둑",
-  "name": "다팅피버(Darting Fever)",
-  "img": "gif/dartingfever.gif",
-  "icon": "icons/dartingfever_icon.png",
-  "desc": "주위 360도 범위 안의 몬스터에게 단검을 공격 횟수만큼 난사. 단검은 한 개만 사용.",
-  "details": [
-    "연속 타격: 최대 4회",
-    "물리 도둑 주력스킬",
-    "주의사항: 도둑은 강타 100% 적용이 안되는 버그가 있습니다"
-  ]
-}
+        "job":"견습기사",
+        "name":"트월링 프로텍터(Twirling Protector)",
+        "img":"gif/twirlingprotector.gif",
+        "icon":"icons/twirlingprotector_icon.png",
+        "desc":"공중에 띄운 방패를 재빨리 돌려 큰 소용돌이를 만들고 그 소용돌이로 적을 공격. 회오리바람을 맞은 적은 잠시 마비.",
+        "details":[ "타격 횟수: 최대타수6", "지식 견습기사 공성 주력스킬", "스킬 속성 바람" ]
+      },
+      {
+        "job":"견습기사",
+        "name":"패러렐 스팅(Dance of Illusion)",
+        "img":"gif/danceofillusion.gif",
+        "icon":"icons/danceofillusion_icon.png",
+        "desc":"자신의 좌우에 수 개의 분신을 만들어 하나의 적을 동시에 찌름.",
+        "details":[ "타격 횟수: 최대타수12", "물리 견습기사 1:1 주력스킬", "스킬 속성 물리" ]
+      },
+      {
+        "job":"견습기사",
+        "name":"와일드댄스(Wild Dance)",
+        "img":"gif/wilddance.gif",
+        "icon":"icons/wilddance_icon.png",
+        "desc":"검을 내지른 채 회전하여 주위의 적을 동시에 공격.",
+        "details":[ "타격 횟수: 0.3초마다 1회", "물리 견습기사 주력스킬", "파워 업: 위력/범위/사정거리×4m" ]
+      },
 
+      /* ==== 마법사 ==== */
+      {
+        "job":"마법사",
+        "name":"메테오 샤워(Meteor Shower)",
+        "img":"gif/meteor.gif",
+        "icon":"icons/meteor_icon.png",
+        "desc":"운석을 떨어뜨려 다수의 적을 공격.",
+        "details":[ "타격 횟수: 최대타수3", "지식 마법사 범위사냥 주력스킬", "스킬 속성 불" ]
+      },
+      {
+        "job":"마법사",
+        "name":"크리티컬 힛(Critical Hit)",
+        "img":"gif/criticalhit.gif",
+        "icon":"icons/criticalhit_icon.png",
+        "desc":"마법 공격에 일정 확률로 치명타를 발생시켜 대미지 증가.",
+        "details":[ "확률 치명타 발동", "공/파밍 보조", "스킬 속성 마법" ]
+      },
+
+      /* ==== 도둑 ==== */
+      {
+        "job":"도둑",
+        "name":"다팅피버(Darting Fever)",
+        "img":"gif/dartingfever.gif",
+        "icon":"icons/dartingfever_icon.png",
+        "desc":"360도 범위의 적에게 단검을 난사(단검 1개 사용).",
+        "details":[ "연속 타격: 최대 4회", "물리 도둑 주력스킬", "주의: 강타 100% 적용 버그" ]
+      },
+      {
+        "job":"도둑",
+        "name":"익스플로전 트랩(Explosion Trap)",
+        "img":"gif/explosiontrap.gif",
+        "icon":"icons/explosiontrap_icon.png",
+        "desc":"설치 후 폭발하여 범위 내 적에게 강한 피해.",
+        "details":[ "타격 횟수: 최대타수1", "지식 도둑 범위사냥 주력", "스킬 속성 불" ]
+      },
+      {
+        "job":"도둑",
+        "name":"더블드로잉(Double Throwing)",
+        "img":"gif/doublethrowing.gif",
+        "icon":"icons/doublethrowing_icon.png",
+        "desc":"단검 두 개를 동시에 던져 적을 공격.",
+        "details":[ "연속 타격: 최대 12회", "물리 도둑 1:1 주력", "스킬 속성 물리" ]
+      },
+
+      /* ==== 전사 ==== (요청하신 details 추가 적용) */
+      {
+        "job":"전사",
+        "name":"드래곤 트위스터(Dragon Defender)",
+        "img":"gif/Dragon Defender.gif",
+        "icon":"icons/dragondefender_icon.png",
+        "desc":"큰 칼 휘두름으로 얼음의 용을 소환. 용은 전사 주위를 빙빙 돌아 퍼져 나가며 적들을 공격.",
+        "details":[ "연속 타격: 최대 4회", "물리 도둑 주력스킬", "스킬 속성 물리" ]
+      },
+      {
+        "job":"전사",
+        "name":"딜레이 크러싱(Delay Crushing)",
+        "img":"gif/Delay Crushing.gif",
+        "icon":"icons/delaycrushing_icon.png",
+        "desc":"빠르게 연속 공격을 가하고, 충격파로 주변 적에게 타격.",
+        "details":[ "연속 타격: 최대 4회", "물리 도둑 주력스킬", "스킬 속성 물리" ]
+      },
+      {
+        "job":"전사",
+        "name":"스트레이트 스파이크(Breaking Spike)",
+        "img":"gif/Breaking Spike.gif",
+        "icon":"icons/breakingspike_icon.png",
+        "desc":"양손검으로 지면을 찌르며 검압 폭풍으로 직선상의 적에게 큰 피해.",
+        "details":[ "연속 타격: 최대 4회", "물리 도둑 주력스킬", "스킬 속성 물리" ]
+      },
+      {
+        "job":"전사",
+        "name":"와일드 스탬프(Daring Leap)",
+        "img":"gif/Daring Leap.gif",
+        "icon":"icons/daringleap_icon.png",
+        "desc":"점프 착지 시 폭발을 일으켜 주변 적들에게 피해.",
+        "details":[ "연속 타격: 최대 4회", "물리 도둑 주력스킬", "스킬 속성 물리" ]
+      },
+      {
+        "job":"전사",
+        "name":"허리케인 쇼크(Hurricane Shock)",
+        "img":"gif/Hurricane Shock.gif",
+        "icon":"icons/hurricaneshock_icon.png",
+        "desc":"분신술로 하나의 적에게 내려치기/휘두르기/찌르기 복합 공격.",
+        "details":[ "연속 타격: 최대 4회", "물리 도둑 주력스킬", "스킬 속성 물리" ]
+      },
+
+      /* ==== 광학사 ==== */
+      {
+        "job":"광학사",
+        "name":"적안개방(Red Eye Open)",
+        "img":"gif/redeyeopen.gif",
+        "icon":"icons/redeyeopen_icon.png",
+        "desc":"붉은 보석의 힘을 개방, 주위 모든 적에게 강력한 빛속성 마법 공격.",
+        "details":[ "광역", "지식 기반", "스킬 속성 빛" ]
+      },
+
+      /* ==== 악마 ==== */
+      {
+        "job":"악마",
+        "name":"바인드 블레이즈(Bind Blaze)",
+        "img":"gif/bindblaze.gif",
+        "icon":"icons/bindblaze_icon.png",
+        "desc":"지옥의 화염을 실은 채찍으로 공격. 화염이 여러 차례 순간 피해.",
+        "details":[ "지속 피해 성향", "지식/지속 빌드", "스킬 속성 불" ]
+      },
+      {
+        "job":"악마",
+        "name":"아라크노포비아(Arachnophobia)",
+        "img":"gif/arachnophobia.gif",
+        "icon":"icons/arachnophobia_icon.png",
+        "desc":"이동을 방해하는 거미줄을 뿜고 중앙에서 거미들이 공격.",
+        "details":[ "구속/광역", "지식 군중제어", "스킬 속성 독" ]
+      },
+
+      /* ==== 강신술사 ==== */
+      {
+        "job":"강신술사",
+        "name":"자책감(Fire And Dark)",
+        "img":"gif/fireanddark.gif",
+        "icon":"icons/fireanddark_icon.png",
+        "desc":"자책의 힘으로 불과 어둠을 불러낸다.",
+        "details":[ "혼합 속성", "지식 빌드", "스킬 속성 불/암흑" ]
+      },
+
+      /* ==== 마법창병 ==== */
+      {
+        "job":"마법창병",
+        "name":"오우섬 포트리스(Fortress)",
+        "img":"gif/fortress.gif",
+        "icon":"icons/fortress_icon.png",
+        "desc":"근접 적을 개별적으로 상대하는 분신을 만들어 동시 공격.",
+        "details":[ "근접 멀티타깃", "분신 소환", "스킬 속성 물리/마법" ]
+      },
+      {
+        "job":"마법창병",
+        "name":"인트랩먼트 피어싱(Entrapment Piercing)",
+        "img":"gif/entrapment.gif",
+        "icon":"icons/entrapment_icon.png",
+        "desc":"창으로 적을 꿰뚫는 강력한 일격.",
+        "details":[ "고정밀 단일기", "관통", "스킬 속성 물리" ]
+      },
+      {
+        "job":"마법창병",
+        "name":"레이디얼 아크(Radial Arc)",
+        "img":"gif/radialarc.gif",
+        "icon":"icons/radialarc_icon.png",
+        "desc":"창을 매개로 번개를 소환, 주위에 방사상의 전호를 날림.",
+        "details":[ "광역 전기", "감전 유발", "스킬 속성 번개" ]
+      },
+
+      /* ==== 마법궁수 ==== */
+      {
+        "job":"마법궁수",
+        "name":"스프레드 애로우(Spread Arrow)",
+        "img":"gif/spreadarrow.gif",
+        "icon":"icons/spreadarrow_icon.png",
+        "desc":"화살이 수 갈래로 갈라져 퍼지며 공격, 출혈 부여.",
+        "details":[ "광역 분산", "출혈", "스킬 속성 물리/마법" ]
+      },
+      {
+        "job":"마법궁수",
+        "name":"워터폴(Waterfall)",
+        "img":"gif/waterfall.gif",
+        "icon":"icons/waterfall_icon.png",
+        "desc":"허공에 쏜 화살이 수십 갈래로 갈라져 폭포수처럼 낙하.",
+        "details":[ "대범위", "연타 낙하", "스킬 속성 물" ]
+      },
+
+      /* ==== 투사 ==== */
+      {
+        "job":"투사",
+        "name":"라스트 불렛(Last Bullet)",
+        "img":"gif/lastbullet.gif",
+        "icon":"icons/lastbullet_icon.png",
+        "desc":"투기로 분신을 만들어 주변 모든 적에게 연타 공격.",
+        "details":[ "다중 분신 연타", "광역", "스킬 속성 물리" ]
+      },
+
+      /* ==== 영술사 ==== */
+      {
+        "job":"영술사",
+        "name":"대회전(Typhoon Slash)",
+        "img":"gif/typhoonslash.gif",
+        "icon":"icons/typhoonslash_icon.png",
+        "desc":"칼날 폭풍으로 적을 베고 경직시킴.",
+        "details":[ "광역 경직", "회전형", "스킬 속성 물리/바람" ]
+      },
+      {
+        "job":"영술사",
+        "name":"혼 불태우기(Soul Burning)",
+        "img":"gif/soulburning.gif",
+        "icon":"icons/soulburning_icon.png",
+        "desc":"영불을 소환해 주기적으로 강해지는 피해, 꺼질 때 모든 마법 사라짐.",
+        "details":[ "지속 피해", "버프/디버프 상쇄", "스킬 속성 영혼" ]
+      },
+
+      /* ==== 변신소녀 ==== */
+      {
+        "job":"변신소녀",
+        "name":"카미트 슈팅(Comet Shooting)",
+        "img":"gif/cometshooting.gif",
+        "icon":"icons/cometshooting_icon.png",
+        "desc":"큰 혜성을 마술봉에서 꺼내 난사. 피격 적은 출혈 상태.",
+        "details":[ "연속 발사", "출혈", "스킬 속성 화염/물리" ]
+      },
+      {
+        "job":"변신소녀",
+        "name":"퀘이사(Quasar Scattering)",
+        "img":"gif/quasar.gif",
+        "icon":"icons/quasar_icon.png",
+        "desc":"중성자별을 전방의 적들에게 마구 뿌림.",
+        "details":[ "광역 산개", "넉백 가능", "스킬 속성 광학/중력" ]
+      },
+      {
+        "job":"변신소녀",
+        "name":"플로렌스 스페셜(Florence Special)",
+        "img":"gif/FlorenceSpecial.gif",
+        "icon":"icons/FlorenceSpecial_icon.png",
+        "desc":"중성자별을 전방의 적들에게 마구 뿌림.",
+        "details":[ "광역 산개", "넉백 가능", "스킬 속성 광학/중력" ]
+      },
+
+      /* ==== 공주 ==== */
+      {
+        "job":"공주",
+        "name":"골리앗 슬레이어(Goliath Slayer)",
+        "img":"gif/goliathslayer.gif",
+        "icon":"icons/goliathslayer_icon.png",
+        "desc":"거인도 쓰러뜨릴 강력한 슬링 일격. 너무 강력해 주변 적도 피해.",
+        "details":[ "초고위력 단일+소범위", "방깎(기절) 가능", "스킬 속성 물리" ]
+      },
+      {
+        "job":"공주",
+        "name":"병던지기(Bottle Throwing)",
+        "img":"gif/BottleThrowing.gif",
+        "icon":"icons/BottleThrowing_icon.png",
+        "desc":"슬링으로 화염병/독가스병 등을 재서 던지는 특화 기술.",
+        "details":[ "상태이상: 화상/중독", "투척 각종 병탄", "스킬 속성 화염/독" ]
+      },
+
+      /* ==== 늑대인간 ==== */
+      {
+        "job":"늑대인간",
+        "name":"그랜드클로(Grand Claws)",
+        "img":"gif/grandclaws.gif",
+        "icon":"icons/grandclaws_icon.png",
+        "desc":"큰 후려치기로 전방의 넓은 적에게 피해.",
+        "details":[ "광역 전방 부채꼴", "출혈 확률", "스킬 속성 물리" ]
+      },
+      {
+        "job":"늑대인간",
+        "name":"체인드 클로(Chained Claws)",
+        "img":"gif/ChainedClaws.gif",
+        "icon":"icons/ChainedClaws_icon.png",
+        "desc":"연속 후려치기. 적 하나를 빠르게 여러 번 공격.",
+        "details":[ "고속 연타", "단일 보스전 효율", "스킬 속성 물리" ]
+      },
+      {
+        "job":"늑대인간",
+        "name":"하울링 블래스트(Howling Blast)",
+        "img":"gif/HowlingBlast.gif",
+        "icon":"icons/HowlingBlast_icon.png",
+        "desc":"울음으로 마법의 주문을 만들어 주변에 큰 폭발.",
+        "details":[ "광역 폭발", "공포/감속 부여 가능", "스킬 속성 서리/음파" ]
+      },
+
+      /* ==== 타락천사 ==== */
+      {
+        "job":"타락천사",
+        "name":"블레스드 해머(Hammer of Many Blessed)",
+        "img":"gif/blessedhammer.gif",
+        "icon":"icons/blessedhammer_icon.png",
+        "desc":"성령의 축복을 입은 마법 해머를 소환해 투척. 적의 빛 저항 잠시 저하.",
+        "details":[ "저항 감소(빛)", "관통 회전타", "스킬 속성 빛" ]
+      },
+      {
+        "job":"타락천사",
+        "name":"홀리 크로스(Holy Cross)",
+        "img":"gif/HolyCross.gif",
+        "icon":"icons/HolyCross_icon.png",
+        "desc":"거대한 빛의 십자가로 범위 피해, 동시에 파티원의 체력 회복(지식에 비례).",
+        "details":[ "광역+회복", "지식 비례 힐", "스킬 속성 빛" ]
+      },
+      {
+        "job":"타락천사",
+        "name":"심판의 날(Judgment Day)",
+        "img":"gif/JudgmentDay.gif",
+        "icon":"icons/JudgmentDay.png",
+        "desc":"무수한 십자가로 일정 범위의 적들을 공격.",
+        "details":[ "지속형 광역난사", "장판형", "스킬 속성 빛" ]
+      },
+
+      /* ==== 사제 ==== */
+      {
+        "job":"사제",
+        "name":"가즈핸드(Guardians Hand)",
+        "img":"gif/guardianshand.gif",
+        "icon":"icons/guardianshand_icon.png",
+        "desc":"주위 적들에게 신의 손의 힘을 실은 일격. 언데드/악마에게 크리 확률 상승.",
+        "details":[ "대언데드/대악마 특효", "근접 광역", "스킬 속성 신성" ]
+      },
+      {
+        "job":"사제",
+        "name":"실드플래시(Shield Flash)",
+        "img":"gif/ShieldFlash.gif",
+        "icon":"icons/ShieldFlash_icon.png",
+        "desc":"피격 순간 방패로 막으며 방패의 빛으로 적의 눈을 멀게 함.",
+        "details":[ "반격/가드 트리거", "실명/명중 저하", "스킬 속성 빛" ]
+      },
+
+      /* ==== 무도가 ==== */
+      {
+        "job":"무도가",
+        "name":"플라잉 니킥(Flying Strike)",
+        "img":"gif/flyingstrike.gif",
+        "icon":"icons/flyingstrike_icon.png",
+        "desc":"무릎을 치켜올려 강타, 여파로 주변 적에게도 피해.",
+        "details":[ "낙궁형 범위", "기절 확률", "스킬 속성 물리" ]
+      },
+      {
+        "job":"무도가",
+        "name":"장풍(Heavy Blow)",
+        "img":"gif/HeavyBlow.gif",
+        "icon":"icons/HeavyBlow_icon.png",
+        "desc":"기를 모아 장풍을 날려 범위 피해 및 감전 상태 부여.",
+        "details":[ "원거리 범위", "감전(둔화) 부여", "스킬 속성 번개" ]
+      }
     ];
 
     function showSkills(job) {
       const container = document.getElementById("skills");
       container.innerHTML = "";
-      const filtered = skills.filter(skill => skill.job === job);
+      const filtered = skills.filter(s => s.job === job);
 
       filtered.forEach(skill => {
         const skillDiv = document.createElement("div");
         skillDiv.className = "skill";
 
-        // 설명 리스트 생성
+        // details 리스트 생성
         let detailsHTML = "";
-        if (skill.details && skill.details.length > 0) {
-          detailsHTML = "<ul>" + skill.details.map(d => `<li>${d}</li>`).join("") + "</ul>";
+        if (Array.isArray(skill.details) && skill.details.length > 0) {
+          detailsHTML = `
+            <h3>추가 속성</h3>
+            <ul>${skill.details.map(d => `<li>${d}</li>`).join("")}</ul>
+          `;
         }
 
+        const metaJSON = JSON.stringify(skill, null, 2);
+
         skillDiv.innerHTML = `
-          <img src="${skill.img}" alt="${skill.name}" style="width:250px;height:250px;"><br>
+          <img class="preview" src="${skill.img}" alt="${skill.name}">
           <div class="skill-title">
             <img src="${skill.icon}" alt="${skill.name} 아이콘">
             <span>${skill.name}</span>
@@ -142,10 +451,21 @@
             <h3>스킬 설명</h3>
             <p>${skill.desc}</p>
             ${detailsHTML}
+            <div class="meta">
+              <details class="meta">
+                <summary>데이터 보기 (job / name / img / icon / desc / details)</summary>
+                <div class="codebox">${metaJSON.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
+              </details>
+            </div>
           </div>
         `;
         container.appendChild(skillDiv);
       });
+
+      // 아무 스킬도 없을 때 안내
+      if (filtered.length === 0) {
+        container.innerHTML = `<p style="opacity:.8">해당 직업의 스킬 데이터가 없습니다.</p>`;
+      }
     }
   </script>
 </body>
